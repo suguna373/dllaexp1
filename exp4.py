@@ -18,3 +18,20 @@ history = model.fit(x_train, y_train,
  validation_data=(x_test, y_test))
 test_loss = model.evaluate(x_test, y_test)
 print('Test loss:', test_loss)
+
+
+test_loss = model.evaluate(x_test, y_test)
+print('Test loss:', test_loss)
+
+from sklearn.metrics import mean_absolute_error
+y_pred = model.predict(x_test)
+mae = mean_absolute_error(y_test, y_pred)
+print('Mean Absolute Error:', mae)
+
+import matplotlib.pyplot as plt
+plt.plot(history.history['loss'], label='Train Loss')
+plt.plot(history.history['val_loss'], label='Validation Loss')
+plt.xlabel('Epochs')
+plt.ylabel('Loss')
+plt.legend()
+plt.show()
